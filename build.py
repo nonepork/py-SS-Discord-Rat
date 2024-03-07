@@ -11,6 +11,7 @@ def build(TOKEN, PROGRAMNAME, ICON):
     build_command = f"pyinstaller --clean --onefile --noconsole --icon={ICON} main-current.py --add-data=seedir\\*:seedir"
     # NOTE: achieve modifying file by reading the main-developer first, modify lines by doing data[0] = something like that, then
     # NOTE: creat a cache.py file, pyinstaller it and then delete it.
+    # TODO: fix .gitignore lol
 
 result = subprocess.run(['pip', 'freeze'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
 installed_packages = result.stdout.split('\n')
