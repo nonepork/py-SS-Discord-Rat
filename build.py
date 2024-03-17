@@ -3,6 +3,8 @@ import sys
 import os
 import shutil
 
+# TODO: fix this
+
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
