@@ -70,8 +70,8 @@ temp = os.getenv('temp')
 #                os.startfile(os.path.join(startup_path, os.path.basename(sys.argv[0])))
 #        else:
 TOKEN = ''
-server_id = ''
-category_id = ''
+server_id = 0
+category_id = 0
 
 prompt_name = 'test'
 master = commands.Bot(command_prefix='_', intents=discord.Intents.all())

