@@ -1,6 +1,12 @@
+> [!IMPORTANT]
+> This project is discontinued due to its executable size,
+> But the functionality still persists.
+
+---
+
 ## SS-Discord-Rat
 
-a discord rat made in python
+A discord rat made in python
 
 ### Disclaimer
 This project is intended for educational purposes only.
@@ -8,8 +14,6 @@ Any actions taken based on my project are done at the user's own risk.
 I'm not liable for any direct or indirect damages or losses that may arise from the use of this project.
 
 ---
-
-Discontinued because file size and stuff
 
 Main feature:
 CMD command  
